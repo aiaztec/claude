@@ -2,55 +2,71 @@
   "dxt_version": "0.1",
   "name": "git-mcp",
   "display_name": "Git MCP",
-  "version": "1.0.0",
-  "description": "Git repository management via git command line",
-  "long_description": "Enables Claude to manage local Git repositories using the git command line tool. Supports committing, pushing, pulling, branching, status checks, log and diff.\n\n**REQUIREMENTS**\n- Git installed and available in PATH as `git`\n- Windows (win32)\n",
+  "version": "2.0.0",
+  "description": "Git repository management via mcp-server-git",
+  "long_description": "Enables Claude to manage local Git repositories using the official mcp-server-git package. Supports status checks, staging, committing, branching, log, diff and more.\n\n**REQUIREMENTS**\n- uv installed and available in PATH as `uv.exe`\n- Git installed and available in PATH as `git`\n- Windows (win32)\n",
   "author": {
     "name": "rene"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "git",
+    "type": "python",
+    "entry_point": "mcp_server_git",
     "mcp_config": {
-      "command": "git",
-      "args": ["mcp"]
+      "command": "uv.exe",
+      "args": ["tool", "run", "mcp-server-git"]
     }
   },
   "tools": [
     {
-      "name": "git-status",
+      "name": "git_status",
       "description": "Show working tree status of a local git repository"
     },
     {
-      "name": "git-add",
+      "name": "git_add",
       "description": "Stage files for commit in a local git repository"
     },
     {
-      "name": "git-commit",
+      "name": "git_commit",
       "description": "Commit staged changes to a local git repository"
     },
     {
-      "name": "git-push",
-      "description": "Push commits to a remote git repository"
+      "name": "git_diff_unstaged",
+      "description": "Show changes in working directory not yet staged"
     },
     {
-      "name": "git-pull",
-      "description": "Pull changes from a remote git repository"
+      "name": "git_diff_staged",
+      "description": "Show changes that are staged for commit"
     },
     {
-      "name": "git-log",
-      "description": "Show commit history of a local git repository"
+      "name": "git_diff",
+      "description": "Show differences between branches or commits"
     },
     {
-      "name": "git-diff",
-      "description": "Show changes between commits or working tree"
+      "name": "git_reset",
+      "description": "Unstage all staged changes"
     },
     {
-      "name": "git-branch",
-      "description": "List, create or delete branches in a local git repository"
+      "name": "git_log",
+      "description": "Show commit history with optional date filtering"
+    },
+    {
+      "name": "git_create_branch",
+      "description": "Create a new branch"
+    },
+    {
+      "name": "git_checkout",
+      "description": "Switch branches"
+    },
+    {
+      "name": "git_show",
+      "description": "Show the contents of a commit"
+    },
+    {
+      "name": "git_branch",
+      "description": "List local, remote or all branches"
     }
   ],
-  "keywords": ["git", "version-control", "repository", "commit", "push"],
+  "keywords": ["git", "version-control", "repository", "commit", "branch"],
   "license": "MIT",
   "compatibility": {
     "platforms": ["win32"]

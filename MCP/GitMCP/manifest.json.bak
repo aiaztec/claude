@@ -1,0 +1,58 @@
+{
+  "dxt_version": "0.1",
+  "name": "git-mcp",
+  "display_name": "Git MCP",
+  "version": "1.0.0",
+  "description": "Git repository management via git command line",
+  "long_description": "Enables Claude to manage local Git repositories using the git command line tool. Supports committing, pushing, pulling, branching, status checks, log and diff.\n\n**REQUIREMENTS**\n- Git installed and available in PATH as `git`\n- Windows (win32)\n",
+  "author": {
+    "name": "rene"
+  },
+  "server": {
+    "type": "binary",
+    "entry_point": "git",
+    "mcp_config": {
+      "command": "git",
+      "args": ["mcp"]
+    }
+  },
+  "tools": [
+    {
+      "name": "git-status",
+      "description": "Show working tree status of a local git repository"
+    },
+    {
+      "name": "git-add",
+      "description": "Stage files for commit in a local git repository"
+    },
+    {
+      "name": "git-commit",
+      "description": "Commit staged changes to a local git repository"
+    },
+    {
+      "name": "git-push",
+      "description": "Push commits to a remote git repository"
+    },
+    {
+      "name": "git-pull",
+      "description": "Pull changes from a remote git repository"
+    },
+    {
+      "name": "git-log",
+      "description": "Show commit history of a local git repository"
+    },
+    {
+      "name": "git-diff",
+      "description": "Show changes between commits or working tree"
+    },
+    {
+      "name": "git-branch",
+      "description": "List, create or delete branches in a local git repository"
+    }
+  ],
+  "keywords": ["git", "version-control", "repository", "commit", "push"],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["win32"]
+  }
+}
