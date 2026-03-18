@@ -1,0 +1,13 @@
+# Backup files
+*.bak
+
+# DXT build artifacts (generated, not source)
+# Uncomment if you don't want to track .dxt files in git:
+# *.dxt
+
+# Commit message temp files
+commit_msg.txt
+
+# OS
+Thumbs.db
+.DS_Store
