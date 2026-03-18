@@ -1,0 +1,46 @@
+{
+  "dxt_version": "0.1",
+  "name": "oracle-sqlcl",
+  "display_name": "Oracle SQLcl MCP",
+  "version": "1.0.0",
+  "description": "Oracle database access via SQLcl built-in MCP server",
+  "long_description": "Enables Claude to connect to Oracle databases using Oracle SQLcl's built-in MCP server. Supports named connections, SQL queries, PL/SQL execution and SQLcl commands.\n\n**REQUIREMENTS**\n- Oracle SQLcl 25.2+ installed and available in PATH as `sql`\n- Java 17+ JRE installed\n- Named connections configured in SQLcl\n",
+  "author": {
+    "name": "rene"
+  },
+  "server": {
+    "type": "binary",
+    "entry_point": "sql",
+    "mcp_config": {
+      "command": "sql",
+      "args": ["-mcp"]
+    }
+  },
+  "tools": [
+    {
+      "name": "list-connections",
+      "description": "List all saved SQLcl named connections"
+    },
+    {
+      "name": "connect",
+      "description": "Connect to a named Oracle database connection"
+    },
+    {
+      "name": "run-sql",
+      "description": "Execute SQL or PL/SQL on the connected Oracle database"
+    },
+    {
+      "name": "run-sqlcl",
+      "description": "Execute SQLcl-specific commands (INFO, DESC, CTAS...)"
+    },
+    {
+      "name": "disconnect",
+      "description": "Disconnect from the current Oracle database session"
+    }
+  ],
+  "keywords": ["oracle", "sql", "database", "plsql", "sqlcl"],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["win32"]
+  }
+}
