@@ -11,6 +11,7 @@ Custom and curated MCP server extensions for Claude Desktop (`.dxt` format).
 | Extension | Description |
 |---|---|
 | [OracleSQLclMCP](./MCP/OracleSQLclMCP/) | Oracle database access via Oracle SQLcl built-in MCP server |
+| [GitMCP](./MCP/GitMCP/) | Git repository management via git command line |
 
 ### Planned
 
