@@ -2,7 +2,7 @@
   "dxt_version": "0.1",
   "name": "oracle-sqlcl",
   "display_name": "Oracle SQLcl MCP",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Oracle database access via SQLcl built-in MCP server",
   "long_description": "Enables Claude to connect to Oracle databases using Oracle SQLcl's built-in MCP server. Supports named connections, SQL queries, PL/SQL execution and SQLcl commands.\n\n**REQUIREMENTS**\n- Oracle SQLcl 25.2+ installed\n- Java 17+ JRE installed\n- Named connections configured in SQLcl\n\n**RESTRICT LEVELS**\n- 4 (default): Most restrictive — blocks CONNMGR, scripts, host commands\n- 3: Blocks host commands and scripts\n- 2: Blocks only host commands\n- 1: Allows scripts, blocks host commands\n- 0: Full access — all SQLcl commands including CONNMGR\n",
   "author": {
@@ -32,6 +32,32 @@
       "default": "4"
     }
   },
+  "prompts": [
+    {
+      "name": "add-connection",
+      "description": "Add a new Oracle database connection",
+      "arguments": ["name", "host", "port", "service", "username", "password"],
+      "text": "Add a new Oracle SQLcl connection with these details:\n- Connection name: ${arguments.name}\n- Host: ${arguments.host}\n- Port: ${arguments.port}\n- Service name: ${arguments.service}\n- Username: ${arguments.username}\n- Password: ${arguments.password}\n\nUse the run-sqlcl tool and execute: connect -savepwd -save ${arguments.name} ${arguments.username}/${arguments.password}@${arguments.host}:${arguments.port}/${arguments.service}\n\nAfter executing, verify the connection was added by listing all connections."
+    },
+    {
+      "name": "rename-connection",
+      "description": "Rename an existing Oracle database connection",
+      "arguments": ["old_name", "new_name"],
+      "text": "Rename the Oracle SQLcl connection '${arguments.old_name}' to '${arguments.new_name}'.\n\nUse the run-sqlcl tool and execute: connmgr rename -conn ${arguments.old_name} ${arguments.new_name}\n\nAfter executing, verify by listing all connections."
+    },
+    {
+      "name": "delete-connection",
+      "description": "Delete an existing Oracle database connection",
+      "arguments": ["name"],
+      "text": "Delete the Oracle SQLcl connection named '${arguments.name}'.\n\nFirst list all connections so the user can confirm this is the right one.\nThen use the run-sqlcl tool and execute: connmgr delete -conn ${arguments.name}\n\nAfter executing, verify by listing all connections."
+    },
+    {
+      "name": "list-connections",
+      "description": "List all saved Oracle database connections with details",
+      "arguments": [],
+      "text": "List all saved Oracle SQLcl connections with their full details (host, port, service, username) using the list-connections tool with show_details=true."
+    }
+  ],
   "tools": [
     {
       "name": "list-connections",
